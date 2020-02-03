@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>What he heck!</title>
+	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<style>
+		body,html{
+			background: #1b4f72 ;
+		}
+		.mobile{
+			width: 100%;
+			min-width: 320px;
+			max-width: 450px;
+			margin: auto;
+			position: relative;
+		}
+		.word{
+			font-size: 100px;
+			color:black;
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-title" content="GumTidLor">
+	<meta name="theme-color" content="#03A9F4">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<link rel="apple-touch-icon" href="icon.jpg">
+	<link rel="apple-touch-icon" sizes="72x72" href="icon.jpg">
+	<link rel="apple-touch-icon" sizes="114x114" href="icon.jpg">
+	<link rel="apple-touch-icon" href="icon.jpg">
+</head>
+<body class="">
+	<div class="mobile bg-white">
+		<div  id="header" class="bg-yellow padding pst -fx -top -left wide t-center cl-vblack">
+			<h3>What the drink?</h3>
+		</div>
+		<sp class="vl"></sp>
+		<sp class="vl"></sp>
+		<div class="padding" id="content">
+			<div id="theInputGroup">
+				<h2>คุณยังไม่มีเครื่องดื่ม</h2>
+			</div>
+			<sp class=""></sp>
+			<button class="btn wide size-l bg-yellow" onclick="displayStudent()">เพิ่มเครืองดื่ม</button>
+			<sp class="xl"></sp>
+		</div>
+		<sp class="xl"></sp>
+		<div class="bg-vblack pst -fx -bottom -left wide" id="panel" onclick="randomStudent()">
+			<h1 class="t-center cl-yellow padding ">สุ่มกาลีกาลีกาลีสุ่ม!</h1>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var drink = ["เบียร์", "กาแฟ", "ชาเย็น", "นมสด", "คาราเมล", "ลีโอ","ช้าง"];
+
+		// if (localStorage.getItem("drink") === null) {
+		// 	localStorage.setItem("drink", "[]");
+		// }
+		// drink = JSON.parse(localStorage.drink);
+		// displayStudent();
+
+		function addMore(){
+			let thisStudent = prompt("กรอกชื่อเครื่องดื่ม")
+			if (thisStudent != null) {
+				drink.push(thisStudent)
+				console.log(drink);
+				displayStudent();
+			}
+		}
+		function displayStudent(){
+				theInputGroup.innerHTML = "";
+				let rand = Math.floor(Math.random() * drink.length);
+				let thisStudent = drink[rand];
+				theInputGroup.innerText = thisStudent;
+
+		}
+		function randomStudent() {
+			let rand = Math.floor(Math.random() * drink.length);
+			let thisStudent = drink[rand];
+			let txt = document.getElementById('txt');
+			txt.innerText = 
+				`<div class="bg-yellow-1 padding wide">
+				${thisStudent}
+				</div>
+				<sp class="s"></sp>
+				`;
+			alert(`ดีใจด้วยจ้า ${thisStudent} เป็นเครื่องดื่มวันนี้`);
+		}
+
+		function removeStudent(index){
+			remove = drink.splice(index,1);
+			displayStudent();
+		}
+
+	</script>
+</body>
+</html>
